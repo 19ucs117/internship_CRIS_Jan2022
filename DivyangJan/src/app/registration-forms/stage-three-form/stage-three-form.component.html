@@ -1,0 +1,207 @@
+<div class="wrapper">
+  <div class="row mb-4 Header1">
+    <div class="col-md-4 text-xl">
+        <img src="assets/logo.png" height="70px" class="img" alt="Indian_Railways_Icon">
+        Diyvang Jan Sahayak
+    </div>
+    <div class="col-md-7 col-xm-3 ml-auto text-sm text-right headerTwo">
+      <div class="row">
+        <div class="col-xm-3">
+          Text-Size: &nbsp;
+          <button type="button" class="btn btn-sm btn-secondary" id="zoomIn" name="zoom_in">+A</button>
+          &nbsp;&nbsp;A&nbsp;&nbsp;
+          <button type="button" class="btn btn-sm btn-secondary" id="zoomOut" name="zoom_out">-A</button>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-1 ml-auto text-sm text-right headerTwo">
+      <i class="fa fa-power-off logout" style="font-size:40px;color:red" (click)="logout()"></i>
+    </div>
+  </div>
+</div>
+<div class="bg-primary w-100" style="height: 100px">
+  <br>
+  <h6  class="text-center">Online Application For New/Re-Issue of Railway Concession Certificate For Persons With Disability<br /> (दिव्यानंग जन)</h6>
+</div>
+<br>
+<div class="container ml-2">
+  <div class="card  border border-dark ml-10">
+    <div class="card-header">
+      <h4  class="text-center">Registration Step - 3 of 3</h4>
+    </div>
+    <div class="card-body mx-auto">
+      <form [formGroup]="registration_third_part" enctype="multipart/form-data">
+        <div class="row mb-4">
+          <div class="col-md-4 ml-5">
+            <label for="" class="form-label mb-2">
+              Railway Concession Certificate (रेलवे रियायत प्रमाणपत्र)
+              <sup style="color: red">
+                *
+              </sup>
+            </label>
+          </div>
+          <div class="col-md-5">
+            <input type="file"
+              class="form-control border border-3 border-dark"
+              formControlName="railway_concession_certificate"
+              required accept="image/*, .pdf"
+              (change)="railway_concession_certificate($event)"
+              *ngIf="is_update_valid<=9 || is_RailwayConcessionCertificate_deleted"
+            />
+            <div class="justify-content-center" *ngIf="is_update_valid>10 && !is_RailwayConcessionCertificate_deleted">
+              <button class="btn btn-secondary mx-3" (click)="view_concession_certificate()">Open</button>
+              <button class="btn btn-danger mx-3" (click)="delete_concession_certificate()" *ngIf="!is_submitted">Delete</button>
+            </div>
+            
+          
+          </div>
+        </div>
+
+        <div class="row mb-4">
+          <div class="col-md-4 ml-5">
+            <label for="" class="form-label mb-2">
+              Disability/Handicapped Certificate (विकलांगता / विकलांग प्रमाण पत्र)
+              <sup style="color: red">
+                *
+              </sup>
+            </label>
+          </div>
+          <div class="col-md-5">
+            <input
+              class="form-control border border-3 border-dark"
+              id="password" type="file" required accept="image/*, .pdf"
+              formControlName="handicapped_certificate"
+              (change)="handicapped_certificate($event)"
+              *ngIf="is_update_valid<=9 || is_HandicappedCertificate_deleted"
+            />
+            <div class="justify-content-center" *ngIf="is_update_valid>10 && !is_HandicappedCertificate_deleted">
+              <button class="btn btn-secondary mx-3" (click)="view_disability_certificate()">Open</button>
+              <button class="btn btn-danger mx-3" (click)="delete_disability_certificate()" *ngIf="!is_submitted">Delete</button>
+            </div>
+          </div>
+        </div>
+        <div class="row mb-4">
+          <div class="col-md-4 ml-5">
+            <label for="" class="form-label mb-2">
+              Age Certificate (आयु प्रमाण पत्र)
+              <sup style="color: red">
+                *
+              </sup>
+            </label>
+          </div>
+          <div class="col-md-5">
+            <input
+              class="form-control border border-3 border-dark"
+               accept="image/*, .pdf" type="file" required
+               formControlName="age_certificate"
+               (change)="age_certificate($event)"
+              *ngIf="is_update_valid<=9 || is_AgeCertificate_deleted"
+            />
+            <div class="justify-content-center" *ngIf="is_update_valid>10 && !is_AgeCertificate_deleted">
+              <button class="btn btn-secondary mx-3" (click)="view_age_certificate()">Open</button>
+              <button class="btn btn-danger mx-3" (click)="delete_age_certificate()" *ngIf="!is_submitted">Delete</button>
+            </div>
+          </div>
+        </div>
+        <div class="row mb-4">
+          <div class="col-md-4 ml-5">
+              <label for="" class="form-label mb-2">
+                Aadhaar Card (आधार कार्ड)
+                <sup style="color: red">
+                  *
+                </sup>
+              </label>
+          </div>
+          <div class="col-md-5">
+            <input
+              class="form-control border border-3 border-dark"
+              type="file" required formControlName="aadhaar_card"
+               accept="image/*, .pdf" (change)="aadhaar_card($event)"
+              *ngIf="is_update_valid<=9 || is_AadhaarCard_deleted"
+            />
+            <div class="justify-content-center" *ngIf="is_update_valid>10 && !is_AadhaarCard_deleted">
+              <button class="btn btn-secondary mx-3" (click)="view_aadhaar_card()">Open</button>
+              <button class="btn btn-danger mx-3" (click)="delete_aadhaar_card()" *ngIf="!is_submitted">Delete</button>
+            </div>
+          </div>
+        </div>
+        <div class="row mb-4">
+          <div class="col-md-4 ml-5">
+              <label for="" class="form-label mb-2">
+                Address Proof (निवास प्रमाण पत्र)
+                <sup style="color: red">
+                  *
+                </sup>
+              </label>
+          </div>
+          <div class="col-md-5">
+            <input
+              class="form-control border border-3 border-dark"
+              type="file" formControlName="address_proof"
+              required accept="image/*, .pdf"
+              (change)="address_proof($event)"
+              *ngIf="is_update_valid<=9 || is_AddressProof_deleted"
+            />
+            <div class="justify-content-center" *ngIf="is_update_valid>10 && !is_AddressProof_deleted">
+              <button class="btn btn-secondary mx-3" (click)="view_address_proof()">Open</button>
+              <button class="btn btn-danger mx-3" (click)="delete_address_proof()" *ngIf="!is_submitted">Delete</button>
+            </div>
+          </div>
+        </div>
+        <div class="row mb-4">
+          <div class="col-md-4 ml-5">
+              <label for="" class="form-label mb-2">
+                Passport Size Photo (पासपोर्ट साइज फोटो)
+                <sup style="color: red">
+                  *
+                </sup>
+              </label>
+          </div>
+          <div class="col-md-5">
+            <input
+              class="form-control border border-3 border-dark"
+              type="file" formControlName="passport_size_photo"
+               accept="image/*, .pdf" (change)="passport_size_photo($event)"
+              *ngIf="is_update_valid<=9 || is_PassportSizePhoto_deleted"
+            />
+            <div class="justify-content-center" *ngIf="is_update_valid>10 && !is_PassportSizePhoto_deleted">
+              <button class="btn btn-secondary mx-3" (click)="view_passportsize_photo()">Open</button>
+              <button class="btn btn-danger mx-3" (click)="delete_passportsize_photo()" *ngIf="!is_submitted">Delete</button>
+            </div>
+          </div>
+        </div>
+        <div class="row mb-4">
+          <div class="col-md-9 ml-5 d-flex justify-content-around">
+            <button
+              type="submit"
+              class="btn btn-primary"
+              name="button"
+              (click)="previous()"
+            >
+              Previous
+            </button>
+            <button
+              type="submit"
+              class="btn btn-primary"
+              name="button"
+              (click)="submit()"
+              *ngIf="is_update_valid<=9"
+            >
+              Save
+            </button>
+            <button
+              type="submit"
+              class="btn btn-primary"
+              name="button"
+              *ngIf="is_update_valid>10 && !is_submitted"
+              (click)="submitForRailways()"
+            >
+              Submit
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<br>

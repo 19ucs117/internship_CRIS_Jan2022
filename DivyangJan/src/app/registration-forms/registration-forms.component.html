@@ -1,0 +1,436 @@
+<div class="wrapper">
+  <div class="row mb-4 Header1">
+    <div class="col-md-4 col-sm-5 text-xl">
+        <img src="assets/logo.png" height="70px" class="img" alt="Indian_Railways_Icon">
+        Diyvang Jan Sahayak
+    </div>
+    <div class="col-md-7 col-sm-6 col-8 ml-auto text-sm text-right headerTwo">
+      <div class="col-xm-4">
+        Text-Size: &nbsp;
+        <button type="button" class="btn btn-sm btn-secondary" id="zoomIn" name="zoom_in">+A</button>
+        &nbsp;&nbsp;A&nbsp;&nbsp;
+        <button type="button" class="btn btn-sm btn-secondary" id="zoomOut" name="zoom_out">-A</button>
+      </div>
+    </div>
+    <div class="col-md-1 col-sm-1 col-3 d-flex justify-content-center headerTwo">
+      <i class="fa fa-power-off logout" style="font-size:40px;color:red" *ngIf="is_update_valid > 0" (click)="logout()"></i>
+      <i class="fa fa-home logout" style="font-size:40px;color:red" *ngIf="is_update_valid <= 0" (click)="navigateToHome()"></i>
+    </div>
+  </div>
+</div>
+<div class="bg-primary w-100" style="height: 100px">
+  <br>
+  <h6  class="text-center">Online Application For New/Re-Issue of Railway Concession Certificate For Persons With Disability<br /> (दिव्यानंग जन)</h6>
+</div>
+<br>
+<div class="container ml-2">
+  <div class="card  border border-dark ml-10">
+    <div class="card-header">
+      <h4  class="text-center">Registration Step - 1 of 3</h4>
+    </div>
+    <div class="card-body mx-auto">
+      <form method="POST" [formGroup]="registration_first_part">
+        <fieldset [disabled]="is_submitted">
+          <div class="row mb-4">
+            <div class="col-md-3 ml-5">
+              <label for="" class="form-label mb-2">
+                Aadhaar Number (आधार नंबर)
+                <sup style="color: red">
+                  *
+                </sup>
+              </label>
+            </div>
+            <div class="col-md-3">
+              <input type="text" (keypress)="PressOnlyNumbers($event)"
+                formControlName="aadhaarNumber"  pattern="^[0-9]*$"
+                class="form-control border border-3 border-dark"
+                placeholder="AADHAAR NO" minlength="12" maxlength="12"
+                required digitOnly
+                [ngClass]="
+                    (registrationForm['aadhaarNumber'].dirty || registrationForm['aadhaarNumber'].touched) &&
+                      registrationForm['aadhaarNumber'].errors ? 'is-invalid'
+                      : ''
+                  "
+                  [ngClass]="
+                    is_submitted && registrationForm['aadhaarNumber'].errors ? 'is-invalid' : ''
+                  "
+              />
+            </div>
+          </div>
+          <div class="row mb-4">
+              <div class="col-md-3 ml-5">
+                <label for="" class="form-label mb-2">
+                  Name (नाम)
+                  <sup style="color: red">
+                    *
+                  </sup>
+                </label>
+              </div>
+                <div class="col-md-3">
+                  <input
+                    type="text"
+                    formControlName="candidate_firstName"
+                    class="form-control border border-3 border-dark"
+                    id="first_Name" pattern="[a-zA-Z]*$"
+                    placeholder="FIRST NAME"
+                    required
+                    [ngClass]="
+                        (registrationForm['candidate_firstName'].dirty || registrationForm['candidate_firstName'].touched) &&
+                          registrationForm['candidate_firstName'].errors ? 'is-invalid'
+                          : ''
+                      "
+                      [ngClass]="
+                        is_submitted && registrationForm['candidate_firstName'].errors ? 'is-invalid' : ''
+                      "
+                  />
+                </div>
+                <div class="col-md-3">
+                  <input
+                    type="text"
+                    formControlName="candidate_middleName"
+                    class="form-control border border-3 border-dark"
+                    id="middle_Name"
+                    placeholder="MIDDLE NAME"
+                    required pattern="[a-zA-Z]*$"
+                    [ngClass]="
+                        (registrationForm['candidate_middleName'].dirty || registrationForm['candidate_middleName'].touched) &&
+                          registrationForm['candidate_middleName'].errors ? 'is-invalid'
+                          : ''
+                      "
+                      [ngClass]="
+                        is_submitted && registrationForm['candidate_middleName'].errors ? 'is-invalid' : ''
+                      "
+                  />
+                </div>
+                <div class="col-md-3">
+                  <input
+                    type="text"
+                    formControlName="candidate_lastName"
+                    class="form-control border border-3 border-dark"
+                    id="last_Name"
+                    placeholder="LAST NAME"
+                    required pattern="[a-zA-Z]*$"
+                    [ngClass]="
+                        (registrationForm['candidate_lastName'].dirty || registrationForm['candidate_lastName'].touched) &&
+                          registrationForm['candidate_lastName'].errors ? 'is-invalid'
+                          : ''
+                      "
+                      [ngClass]="
+                        is_submitted && registrationForm['candidate_lastName'].errors ? 'is-invalid' : ''
+                      "
+                  />
+                </div>
+          </div>
+          <div class="row mb-4">
+            <div class="col-md-3 ml-5">
+              <label for="" class="form-label mb-2">
+                Father's/Husband's Name (पिता/पति का नाम)
+                <sup style="color: red">
+                  *
+                </sup>
+              </label>
+            </div>
+            <div class="col">
+              <div class="row" style="height: 100p">
+                <div class="col-md-8 check-control">
+                  <input
+                    type="radio"
+                    formControlName="relation_name"
+                    class="form-check-control p-0 border border-3 border-dark"
+                    id="fatherName" value="Father"
+                    required
+                  />
+                  <label for="fatherName" class="form-check-label p-0 mb-2 me-3">FATHER (पिता)</label>
+                  <input
+                    type="radio" formControlName="relation_name"
+                    class="form-check-control p-4 border border-3 border-dark"
+                    id="husbandName" value="Husband"
+                    required
+                  />
+                  <label for="husbandName" class="form-check-label p-0 mb-2 m-0">HUSBAND (पति)</label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-4">
+                  <input
+                    type="text" formControlName="relations_firstName"
+                    class="form-control border border-3 border-dark"
+                    id="firstName" placeholder="FIRST NAME"
+                    required pattern="[a-zA-Z]*$"
+                    [ngClass]="
+                        (registrationForm['relations_firstName'].dirty || registrationForm['relations_firstName'].touched) &&
+                          registrationForm['relations_firstName'].errors ? 'is-invalid'
+                          : ''
+                      "
+                      [ngClass]="
+                        is_submitted && registrationForm['relations_firstName'].errors ? 'is-invalid' : ''
+                      "
+                  />
+                </div>
+                <div class="col-md-4">
+                  <input
+                    type="text" formControlName="relations_middleName"
+                    class="form-control border border-3 border-dark"
+                    id="middleName" placeholder="MIDDLE NAME"
+                    required pattern="[a-zA-Z]*$"
+                    [ngClass]="
+                        (registrationForm['relations_middleName'].dirty || registrationForm['relations_middleName'].touched) &&
+                          registrationForm['relations_middleName'].errors ? 'is-invalid'
+                          : ''
+                      "
+                      [ngClass]="
+                        is_submitted && registrationForm['relations_middleName'].errors ? 'is-invalid' : ''
+                      "
+                  />
+                </div>
+                <div class="col-md-4">
+                  <input
+                    type="text" formControlName="relations_lastName"
+                    class="form-control border border-3 border-dark"
+                    id="lastName" placeholder="LAST NAME"
+                    required pattern="[a-zA-Z]*$"
+                    [ngClass]="
+                        (registrationForm['relations_lastName'].dirty || registrationForm['relations_lastName'].touched) &&
+                          registrationForm['relations_lastName'].errors ? 'is-invalid'
+                          : ''
+                      "
+                      [ngClass]="
+                        is_submitted && registrationForm['relations_lastName'].errors ? 'is-invalid' : ''
+                      "
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row mb-4">
+            <div class="col-md-3 ml-5">
+              <label for="" class="form-label mb-2">
+                Create Password (पासवर्ड बनाएं)
+                <sup style="color: red">
+                  *
+                </sup>
+              </label>
+            </div>
+            <div class="col-md-3">
+              <input
+                formControlName="password"
+                class="form-control border border-3 border-dark"
+                minlength="8" id="password"
+                type="password" placeholder="PASSWORD"
+                required
+                [ngClass]="
+                    (registrationForm['password'].dirty || registrationForm['password'].touched) &&
+                      registrationForm['password'].errors ? 'is-invalid'
+                      : ''
+                  "
+                  [ngClass]="
+                    is_submitted && registrationForm['password'].errors ? 'is-invalid' : ''
+                  "
+              />
+            </div>
+          </div>
+          <div class="row mb-4">
+            <div class="col-md-3 ml-5">
+              <label for="" class="form-label mb-2">
+                Date Of Birth (जन्म की तारीख)
+                <sup style="color: red">
+                  *
+                </sup>
+              </label>
+            </div>
+            <div class="col-md-3">
+              <input
+                class="form-control border border-3 border-dark"
+                formControlName="date_of_birth" id="date"
+                type="date" onfocus="(this.type='date')"
+                placeholder="DD-MM-YYYY" required
+                [ngClass]="
+                    (registrationForm['date_of_birth'].dirty || registrationForm['date_of_birth'].touched) &&
+                      registrationForm['date_of_birth'].errors ? 'is-invalid'
+                      : ''
+                  "
+                  [ngClass]="
+                    is_submitted && registrationForm['date_of_birth'].errors ? 'is-invalid' : ''
+                  "
+              />
+            </div>
+          </div>
+          <div class="row mb-4">
+              <div class="col-md-3 ml-5">
+                <label for="" class="form-label mb-2">
+                  Gender (लिंग)
+                  <sup style="color: red">
+                    *
+                  </sup>
+                </label>
+              </div>
+              <div class="col-md-8 check-control">
+                <input
+                  type="radio" formControlName="gender"
+                  class="form-check-control p-0 border border-3 border-dark"
+                  id="male" value="male" required
+                />
+                <label for="male" class="form-check-label p-0 me-3">MALE (पुरुष)</label>
+                <input
+                  type="radio" formControlName="gender"
+                  class="form-check-control p-0 m-0 border border-3 border-dark"
+                  id="female" value="female" required
+                />
+                <label for="female" class="form-check-label me-3">FEMALE (महिला)</label>
+                <input
+                  type="radio" formControlName="gender"
+                  class="form-check-control p-0 border border-3 border-dark"
+                  id="other" value="other" required
+                />
+                <label for="other" class="form-check-label m-0 p-0">OTHER (अन्य)</label>
+              </div>
+          </div>
+          <div class="row mb-4">
+            <div class="col-md-3 ml-5">
+                <label for="" class="form-label mb-2">
+                  Mobile Number (मोबाइल नंबर)
+                  <sup style="color: red">
+                    *
+                  </sup>
+                </label>
+            </div>
+            <div class="col-md-3">
+              <input
+                formControlName="mobileNumber" (keypress)="PressOnlyNumbers($event)"
+                class="form-control border border-3 border-dark"
+                id="mobile" type="text" placeholder="MOBILE NUMBER"
+                maxlength="10" required digitOnly  pattern="^[0-9]*$"
+                [ngClass]="
+                    (registrationForm['mobileNumber'].dirty || registrationForm['mobileNumber'].touched) &&
+                      registrationForm['mobileNumber'].errors ? 'is-invalid'
+                      : ''
+                  "
+                [ngClass]="
+                  is_submitted && registrationForm['mobileNumber'].errors ? 'is-invalid' : ''
+                "
+              />
+            </div>
+          </div>
+          <div class="row mb-4">
+            <div class="col-md-3 ml-5">
+                <label for="" class="form-label mb-2">
+                  Alternate Contact (वैकल्पिक संपर्क)
+                </label>
+            </div>
+            <div class="col-md-3">
+              <input
+                formControlName="alternateContactNumber" (keypress)="PressOnlyNumbers($event)"
+                class="form-control border border-3 border-dark"
+                id="AltMobile" type="text" placeholder="ALTERNATE NUMBER"
+                minlenght="10" maxlength="10" digitOnly  pattern="^[0-9]*$"
+                [ngClass]="
+                  is_submitted && registrationForm['alternateContactNumber'].errors ? 'is-invalid' : ''
+                "
+              />
+            </div>
+          </div>
+          <div class="row mb-4">
+            <div class="col-md-3 ml-5">
+                <label for="" class="form-label mb-2">
+                  Email (ई-मेल)
+                </label>
+            </div>
+            <div class="col-md-3">
+              <input
+                class="form-control border border-3 border-dark"
+                formControlName="email" id="email" type="email"
+                placeholder="EMAIL"
+                  [ngClass]="
+                    is_submitted && registrationForm['email'].errors ? 'is-invalid' : ''
+                  "
+              />
+            </div>
+          </div>
+          <div class="row mb-4">
+            <div class="col-md-3 ml-5">
+                <label for="" class="form-label mb-2">
+                  Address (पता)
+                  <sup style="color: red">
+                    *
+                  </sup>
+                </label>
+            </div>
+            <div class="col-md-4">
+              <textarea
+                class="form-control border border-3 border-dark"
+                formControlName="address" id="address"
+                placeholder="ADDRESS" rows="9" cols="200"
+                style="resize: none;" required
+                [ngClass]="
+                    (registrationForm['address'].dirty || registrationForm['address'].touched) &&
+                      registrationForm['address'].errors ? 'is-invalid'
+                      : ''
+                  "
+                [ngClass]="
+                  is_submitted && registrationForm['address'].errors ? 'is-invalid' : ''
+                "
+              >
+              </textarea>
+            </div>
+          </div>
+          <div class="row mb-4">
+            <div class="col-md-3 ml-5">
+                <label for="" class="form-label mb-2">
+                  Pin Code (पिन कोड)
+                  <sup style="color: red">
+                    *
+                  </sup>
+                </label>
+            </div>
+            <div class="col-md-3">
+              <input
+                class="form-control border border-3 border-dark"
+                formControlName="pincode" id="pincode" digitOnly
+                type="text" placeholder="PINCODE" pattern="^[0-9]*$"
+                minlenght="6" maxlength="6" required (keypress)="PressOnlyNumbers($event)"
+                [ngClass]="
+                    (registrationForm['pincode'].dirty || registrationForm['pincode'].touched) &&
+                      registrationForm['pincode'].errors ? 'is-invalid'
+                      : ''
+                  "
+                [ngClass]="
+                  is_submitted && registrationForm['pincode'].errors ? 'is-invalid' : ''
+                "
+              />
+            </div>
+          </div>
+        </fieldset>
+        <fieldset>
+          <div class="row mb-4">
+            <div class="col-md-6 ml-5 d-flex justify-content-center">
+              <button
+                type="submit"
+                class="btn btn-primary"
+                name="button"
+                (click)="submit()"
+                [disabled]="!registration_first_part.valid"
+                *ngIf="is_update_valid <= 0"
+              >
+                Save
+              </button>
+              <button
+                type="button"
+                class="btn btn-warning"
+                name="button"
+                [disabled]="!registration_first_part.valid"
+                (click)="next()"
+                *ngIf="is_update_valid > 0"
+              >
+                Next
+              </button>
+            </div>
+          </div>
+        </fieldset>
+      </form>
+    </div>
+  </div>
+</div>
+<br>
+<div class="container-fluid row h-25">
+
+</div>

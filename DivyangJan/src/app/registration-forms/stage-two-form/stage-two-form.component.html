@@ -1,0 +1,281 @@
+<div class="wrapper">
+  <div class="row mb-4 Header1">
+    <div class="col-md-4 text-xl">
+        <img src="assets/logo.png" height="70px" class="img" alt="Indian_Railways_Icon">
+        Diyvang Jan Sahayak
+    </div>
+    <div class="col-md-7 ml-auto text-sm text-right headerTwo">
+      <div class="col-xm-4">
+        Text-Size: &nbsp;
+        <button type="button" class="btn btn-sm btn-secondary" id="zoomIn" name="zoom_in">+A</button>
+        &nbsp;&nbsp;A&nbsp;&nbsp;
+        <button type="button" class="btn btn-sm btn-secondary" id="zoomOut" name="zoom_out">-A</button>
+      </div>
+    </div>
+    <div class="col-md-1 ml-auto text-sm text-right headerTwo">
+      <i class="fa fa-power-off logout" style="font-size:40px;color:red" (click)="logout()"></i>
+    </div>
+  </div>
+</div>
+<div class="bg-primary w-100" style="height: 100px">
+  <br>
+  <h6  class="text-center">Online Application For New/Re-Issue of Railway Concession Certificate For Persons With Disability<br /> (दिव्यानंग जन)</h6>
+</div>
+<br>
+<div class="container ml-2">
+  <div class="card  border border-dark ml-10">
+    <div class="card-header">
+      <h4  class="text-center">Registration Step - 2 of 3</h4>
+    </div>
+    <div class="card-body mx-auto">
+      <form [formGroup]="registration_second_part">
+        <fieldset [disabled]="is_submitted">
+          <div class="row mb-4">
+            <div class="col-md-3 ml-5">
+              <label for="" class="form-label mb-2">
+                Disability Certificate Number (विकलांगता प्रमाणपत्र संख्या)
+                <sup style="color: red">
+                  *
+                </sup>
+              </label>
+            </div>
+            <div class="col-md-5">
+              <input type="text"
+                class="form-control border border-3 border-dark"
+                placeholder="DISABILITY CERTIFICATE NUMBER"
+                formControlName="disability_certificate_number" required
+                [ngClass]="
+                    (registrationFormSecondStage['disability_certificate_number'].dirty ||
+                      registrationFormSecondStage['disability_certificate_number'].touched) &&
+                      registrationFormSecondStage['disability_certificate_number'].errors ? 'is-invalid'
+                      : ''
+                  "
+                  [ngClass]="
+                    is_submitted && registrationFormSecondStage['disability_certificate_number'].errors ? 'is-invalid' : ''
+                  "
+              />
+            </div>
+          </div>
+          <div class="row mb-4">
+              <div class="col-md-3 ml-5">
+                <label for="" class="form-label mb-2">
+                  Nature of Disability (विकलांगता की प्रकृति)
+                  <sup style="color: red">
+                    *
+                  </sup>
+                </label>
+              </div>
+              <div class="col-md-8 check-control">
+                <input
+                  type="radio" formControlName="nature_of_disability"
+                  class="form-check-control p-0 border border-3 border-dark"
+                  id="male" value="Permanent" required
+                />
+                <label for="male" class="form-check-label p-0 me-3">PERMANENT (स्थायी)</label>
+                <input
+                  type="radio" formControlName="nature_of_disability"
+                  class="form-check-control p-0 m-0 border border-3 border-dark"
+                  id="female" value="Temporary" required
+                />
+                <label for="female" class="form-check-label me-3">TEMPORARY (अस्थायी)</label>
+              </div>
+          </div>
+          <div class="row mb-4">
+            <div class="col-md-3 ml-5">
+              <label for="" class="form-label mb-2">
+                Type of Category (श्रेणी का प्रकार)
+                <sup style="color: red">
+                  *
+                </sup>
+              </label>
+            </div>
+            <div class="col-md-5">
+              <select
+                class="form-control form-select border border-3 border-dark"
+                id="type_of_category" formControlName="type_of_category"
+                [ngClass]="
+                    (registrationFormSecondStage['type_of_category'].dirty ||
+                      registrationFormSecondStage['type_of_category'].touched) &&
+                      registrationFormSecondStage['type_of_category'].errors ? 'is-invalid'
+                      : ''
+                  "
+                  [ngClass]="
+                    is_submitted && registrationFormSecondStage['type_of_category'].errors ? 'is-invalid' : ''
+                  "
+              >
+                <option value="" selected disabled hidden>---CHOOSE ONE---</option>
+                <option value="option-1">Option - 1</option>
+              </select>
+            </div>
+          </div>
+          <div class="row mb-4">
+            <div class="col-md-3 ml-5">
+                <label for="" class="form-label mb-2">
+                  Railway Concession Certificate Issuing Hospital (रेलवे रियायत प्रमाणपत्र जारी करने वाला अस्पताल)
+                  <sup style="color: red">
+                    *
+                  </sup>
+                </label>
+            </div>
+            <div class="col-md-5">
+              <select
+                class="form-control form-select border border-3 border-dark"
+                id="select_hospital" formControlName="railway_concession_certificate_issuing_hospital"
+                [ngClass]="
+                    (registrationFormSecondStage['railway_concession_certificate_issuing_hospital'].dirty ||
+                      registrationFormSecondStage['railway_concession_certificate_issuing_hospital'].touched) &&
+                      registrationFormSecondStage['railway_concession_certificate_issuing_hospital'].errors ? 'is-invalid'
+                      : ''
+                  "
+                  [ngClass]="
+                    is_submitted && registrationFormSecondStage['railway_concession_certificate_issuing_hospital'].errors ? 'is-invalid' : ''
+                  "
+              >
+                <option value="" selected disabled hidden>--SELECT HOSPITAL NAME--</option>
+                <option value="option-1">Option - 1</option>
+              </select>
+            </div>
+          </div>
+          <div class="row mb-4">
+            <div class="col-md-3 ml-5">
+                <label for="" class="form-label mb-2">
+                  Address Of Hospital (अस्पताल का पता)
+                  <sup style="color: red">
+                    *
+                  </sup>
+                </label>
+            </div>
+            <div class="col-md-5">
+              <textarea
+                class="form-control border border-3 border-dark"
+                formControlName="hospital_address" id="hospital_address"
+                cols="200" rows="9" placeholder="ADDRESS" required
+                [ngClass]="
+                    (registrationFormSecondStage['hospital_address'].dirty ||
+                      registrationFormSecondStage['hospital_address'].touched) &&
+                      registrationFormSecondStage['hospital_address'].errors ? 'is-invalid'
+                      : ''
+                  "
+                  [ngClass]="
+                    is_submitted && registrationFormSecondStage['hospital_address'].errors ? 'is-invalid' : ''
+                  "
+              >
+              </textarea>
+            </div>
+          </div>
+          <div class="row mb-4">
+            <div class="col-md-3 ml-5">
+                <label for="" class="form-label mb-2">
+                  Name of Doctor in Concession Certificate (रियायत प्रमाण पत्र में चिकित्सक का नाम)
+                </label>
+            </div>
+            <div class="col-md-5">
+              <input
+                class="form-control border border-3 border-dark"
+                type="text" placeholder="NAME OF DOCTOR"
+                formControlName="doctor_name" required
+                [ngClass]="
+                    (registrationFormSecondStage['doctor_name'].dirty ||
+                      registrationFormSecondStage['doctor_name'].touched) &&
+                      registrationFormSecondStage['doctor_name'].errors ? 'is-invalid'
+                      : ''
+                  "
+                  [ngClass]="
+                    is_submitted && registrationFormSecondStage['doctor_name'].errors ? 'is-invalid' : ''
+                  "
+              />
+            </div>
+          </div>
+          <div class="row mb-4">
+            <div class="col-md-3 ml-5">
+                <label for="" class="form-label mb-2">
+                  Registration Number of Doctor (डॉक्टर की पंजीकरण संख्या)
+                </label>
+            </div>
+            <div class="col-md-5">
+              <input
+                class="form-control border border-3 border-dark"
+                type="text" placeholder="DOCTOR'S REGISTRATION NO."
+                required formControlName="doctor_registration_no"
+                [ngClass]="
+                    (registrationFormSecondStage['doctor_registration_no'].dirty ||
+                      registrationFormSecondStage['doctor_registration_no'].touched) &&
+                      registrationFormSecondStage['doctor_registration_no'].errors ? 'is-invalid'
+                      : ''
+                  "
+                  [ngClass]="
+                    is_submitted && registrationFormSecondStage['doctor_registration_no'].errors ? 'is-invalid' : ''
+                  "
+              />
+            </div>
+          </div>
+          <div class="row mb-4">
+            <div class="col-md-3 ml-5">
+                <label for="" class="form-label mb-2">
+                  Date of Issue of Concession Certificate (रियायत प्रमाण पत्र जारी करने की तिथि)
+                  <sup style="color: red">
+                    *
+                  </sup>
+                </label>
+            </div>
+            <div class="col-md-5">
+              <input
+                class="form-control border border-3 border-dark"
+                type="date" placeholder="DD/MM/YYYY" required
+                formControlName="date_of_issue_concession_certificate"
+                [ngClass]="
+                    (registrationFormSecondStage['date_of_issue_concession_certificate'].dirty ||
+                      registrationFormSecondStage['date_of_issue_concession_certificate'].touched) &&
+                      registrationFormSecondStage['date_of_issue_concession_certificate'].errors ? 'is-invalid'
+                      : ''
+                  "
+                  [ngClass]="
+                    is_submitted && registrationFormSecondStage['date_of_issue_concession_certificate'].errors ? 'is-invalid' : ''
+                  "
+              />
+            </div>
+          </div>
+        </fieldset>
+        <fieldset>
+          <div class="row mb-4">
+            <div class="col-md-10 ml-5 d-flex justify-content-around">
+              <button
+                type="submit"
+                class="btn btn-primary"
+                name="button"
+                (click)="previous()"
+              >
+                Previous
+              </button>
+              <button
+                type="submit"
+                class="btn btn-primary"
+                name="button"
+                (click)="submit()"
+                [disabled] = "!registration_second_part.valid"
+                *ngIf="is_update_valid <= 0"
+              >
+                Save
+              </button>
+              <button
+                type="submit"
+                class="btn btn-primary"
+                name="button"
+                *ngIf="is_update_valid > 0"
+                [disabled] = "!registration_second_part.valid"
+                (click)="next()"
+              >
+                Next
+              </button>
+            </div>
+          </div>
+        </fieldset>
+        
+      </form>
+    </div>
+  </div>
+</div>
+<br>
+<div class="container-fluid row h-25">
+
+</div>

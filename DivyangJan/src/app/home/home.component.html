@@ -1,0 +1,113 @@
+<div class="wrapper">
+  <div class="row Header1">
+    <div class="col-md-4 col-sm-5 text-xl">
+        <img src="assets/logo.png" height="70px" class="img" alt="Indian_Railways_Icon">
+        Diyvang Jan Sahayak
+    </div>
+    <div class="col-md-7 col-sm-6 col-8 ml-auto text-sm text-right headerTwo">
+      Text-Size: &nbsp;
+      <button type="button" class="btn btn-sm btn-secondary" id="zoomIn" (click)="zoom_in()" name="zoom_in">+A</button>
+      &nbsp;&nbsp;A&nbsp;&nbsp;
+      <button type="button" class="btn btn-sm btn-secondary" id="zoomOut" (click)="zoom_out()" name="zoom_out">-A</button>
+    </div>
+    <div class="col-md-1 col-sm-1 col-3 d-flex justify-content-center">
+      <i style="font-size:40px;color:red;margin-top:12px" (click)="navigateToHome()" class="fa fa-home homeButton"></i>
+    </div>
+  </div>
+  <div class="row">
+    <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="assets/railway_slider4.jpg" class="d-block w-100 sm-height" alt="railways_slider4" />
+        </div>
+        <div class="carousel-item">
+          <img src="assets/railway_slider5.jpg" class="d-block w-100 sm-height" alt="railways_slider4" />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<br>
+<div class="row">
+  <div class="col-md-4">
+    <div class="btn button d-flex">
+      <span style="font-size: 25px;" id="button" (click)="showNav()" class="fa fa-bars button"></span>
+    </div>
+    <nav id="navbarDisplay" class="navbar">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a routerLink="" routerLinkActive="active" class="nav-link">
+            <i class="fa fa-home extra-padding" style="font-size: 25px"></i>
+            Home
+          </a>
+        </li>
+        <li class="nav-item">
+          <a routerLink="instructions" routerLinkActive="active" class="nav-link">
+            <i class="fa fa-info-circle extra-padding" style="font-size: 25px;"></i>
+            Instructions / निर्देश
+          </a>
+        </li>
+        <li class="nav-item">
+          <a routerLink="registration" style="display: inline-block;" routerLinkActive="active" class="nav-link">
+            
+            <span style="padding-top: 50%;" class="">
+              <i class="fa fa-user extra-padding" style="font-size: 25px; height: 30px"></i>
+            </span>
+             <span class="">
+              Registration for Concession 
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/ रियायत के लिए रजिस्टर
+             </span> 
+          </a>
+        </li>
+        <li class="nav-item">
+          <a routerLink="/" routerLinkActive="active" class="nav-link">
+            <i class="arrow right extra-padding" style="font-size: 30px; vertical-align: bottom;"></i>
+            Staff Login
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+  <div class="col-md-8 justify-content-center">
+    <div class="row">
+      <div class="col-md-6 col-sm-12 d-flex justify-content-center">
+        <div class="w-100">
+          <h3 class="mg-b-5 text-center" style="text-align: center">Member Login</h3>
+          <div class="input-icons">
+            <form class="form-control" [formGroup]="loginForm">
+              <div class="form-group">
+                <label class="tx-light mb-2">Mobile Number:-</label>
+                <input type="text" class="form-control input-field mb-4"
+                  formControlName="phone_number"
+                  placeholder="Phone Number" required
+                />
+              </div>
+              <div class="form-group">
+                <div class="d-flux justify-content-between input-group mg-b-5">
+                  <label class="mg-b-0-f mb-2" >Password:-</label>
+                </div>
+                <input type="password"
+                  autocomplete="off" class="form-control input-field mb-3"
+                  formControlName="password" placeholder="********"
+                  required
+                />
+              </div>
+              <br>
+              <div class="d-flex justify-content-center">
+                <button [disabled]="!loginForm.valid" (click)="login()" type="submit" name="commit" class="btn btn-block" style="background-color: #01c8ee;">
+                  <span class="tx-bold">Sign-In</span>
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid">
+  <div class="">
+
+  </div>
+</div>

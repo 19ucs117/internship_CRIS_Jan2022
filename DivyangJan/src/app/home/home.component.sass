@@ -1,0 +1,88 @@
+html
+  overflow-x: hidden
+
+.button
+  display: none
+
+.Header1
+  padding: 10px
+
+.headerTwo
+  text-align: right
+  padding-top: 20px
+
+.info_step
+  height: 200px
+  width: 200px
+
+#carouselExampleSlidesOnly
+  padding-right: 0px
+
+nav
+  width: 290px
+  padding: 10px
+  background-color: #d9d9d9
+  font-size: 17px
+  padding: 10px
+
+nav a
+  margin-bottom: 10px
+
+nav li
+  color: white
+  padding: 5px
+
+i
+  margin-right: 10px
+
+pre
+  margin-bottom: 0
+
+.right
+  transform: rotate(-45deg)
+  -webkit-transform: rotate(-45deg)
+
+.arrow
+  border: solid white
+  border-width: 0 3px 3px 0
+  display: inline-block
+  padding: 3px
+  margin-bottom: 3px
+
+.extra-padding
+  padding-left: 10px
+
+.homeButton
+  cursor: pointer
+
+.navbar
+  display: block
+
+
+$small: 780px
+
+$verySmall: 550px
+
+@media screen and (max-width: $small) 
+    .navbar
+      display: none
+      position: absolute
+      z-index: 1
+      margin-left: 10px
+
+    .button
+      display: block
+      align: left
+      
+    .show
+      display: block
+
+    .navbar a
+      display: block
+
+    .sm-height
+      height: 250px
+
+@media screen and (max-width: $verySmall) 
+    .sm-height
+      height: 150px
